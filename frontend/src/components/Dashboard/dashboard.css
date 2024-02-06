@@ -12,6 +12,7 @@ tr {
 
 }
 
+
 td:not(:last-child),
 th:not(:last-child) {
   border-right: solid 1px var(--line-col);

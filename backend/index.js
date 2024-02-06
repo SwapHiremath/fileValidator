@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const dbConnect = require("./db/dbConnect");
 const User = require("./db/userModel");
+const FileDetails = require("./db/fileDetailsModel");
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded());
@@ -41,6 +42,36 @@ app.post("/register", (req, res) => {
         .then((result) => {
           res.status(201).send({
             message: "User Created Successfully",
+            result,
+          });
+        })
+        .catch((error) => {
+          res.status(500).send({
+            message: "Error creating user",
+            error,
+          });
+        });
+    }
+  });
+});
+
+app.post("/uploadFileData", (req, res) => {
+  const { fileName, fileData } = req.body;
+  FileDetails.findOne({ fileName: fileName }, (err, data) => {
+    if (data) {
+      res.send({ message: "File already registerd" });
+    } else {
+      let currentDate = new Date();
+      const fileDetails = new FileDetails({
+        fileName,
+        fileData,
+        currentDate,
+      });
+      fileDetails
+        .save()
+        .then((result) => {
+          res.status(201).send({
+            message: "File uploaded Successfully",
             result,
           });
         })

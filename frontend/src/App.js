@@ -13,12 +13,14 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            {
-              user && user._id ? <Dashboard setLoginUser={setLoginUser} /> : <Login setLoginUser={setLoginUser}/>
-            }
+            {user && user._id ? (
+              <Dashboard setLoginUser={setLoginUser} />
+            ) : (
+              <Login setLoginUser={setLoginUser} />
+            )}
           </Route>
           <Route path="/login">
-            <Login setLoginUser={setLoginUser}/>
+            <Login setLoginUser={setLoginUser} />
           </Route>
           <Route path="/register">
             <Register />

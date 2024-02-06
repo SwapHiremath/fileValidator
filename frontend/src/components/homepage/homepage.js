@@ -3,7 +3,7 @@ import CSVReader from "react-csv-reader";
 import "./homepage.css";
 
 const Homepage = ({ setLoginUser }) => {
-  debugger;
+  // debugger;
   console.log('User is loging off.........');
   const papaparseOptions = {
     header: true,

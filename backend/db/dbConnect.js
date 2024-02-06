@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 async function dbConnect() {
   mongoose
-    .connect("mongodb://0.0.0.0:27017/myLoginRegisterDB", {
+    .connect("mongodb://0.0.0.0:27017/fileValidationSystem", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
