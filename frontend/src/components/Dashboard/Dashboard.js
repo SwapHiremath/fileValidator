@@ -73,8 +73,11 @@ export default function Dashboard({ setLoginUser }) {
   return (
     <>
       <header className="header">
+        <div className="headerTitle">
+          Data Validator
+        </div>
         <div className="logOutButton" onClick={() => setLoginUser({})}>
-          Logout
+          <img src={require('./logout.svg').default} alt='mySvgImage' />
         </div>
       </header>
       <body>
@@ -82,7 +85,6 @@ export default function Dashboard({ setLoginUser }) {
           <CSVReader
             onUploadAccepted={handleFileUpload}
             config={{ worker: true }}
-            noDrag
           >
             {({
               getRootProps,
@@ -95,10 +97,10 @@ export default function Dashboard({ setLoginUser }) {
                 <div {...getRootProps()}>
                   {acceptedFile ? (
                     <>
-                      <div className="info-container">
+                      <div className="info-container uploadPanel">
                         <div className="file-info">
-                          <p>{acceptedFile.name}</p>
-                          <span>{formatFileSize(acceptedFile.size)}</span>
+                          <p><b>File Name:</b> {acceptedFile.name}</p>
+                          <span><b>File size:</b> {formatFileSize(acceptedFile.size)}</span>
                         </div>
                         <div className="info__progress">
                           <ProgressBar />
@@ -109,7 +111,18 @@ export default function Dashboard({ setLoginUser }) {
                       </div>
                     </>
                   ) : (
-                    <button>Upload file</button>
+                    <div>
+                    <div className="uploadPanel">
+                      <div>Upload your file here</div>
+                      <button className="uploadButton">Upload file</button>
+                    </div>
+                    {
+                      (!acceptedFile?.name) &&
+                      <div className="info-container uploadPanel">
+                        Pleaes upload your file to validate!
+                      </div>
+                    }
+                    </div>
                   )}
                 </div>
 
@@ -117,8 +130,7 @@ export default function Dashboard({ setLoginUser }) {
                   <div className="erro-wraper">
                     {errorLogs.map((errorEntry, i) => (<p className="error-logs">{i + 1}. {errorEntry}</p >))}
                   </div>
-                  <table
-                    style={{ display: "block", overflowX: "auto", fontSize: "20px" }}>
+                  <table className="table">
                     <thead>
                       <tr>
                         {col.length > 0 &&

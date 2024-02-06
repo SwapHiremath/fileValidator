@@ -10,6 +10,14 @@ function App() {
   const [ user, setLoginUser] = useState({})
   return (
     <div className="App">
+      {
+        !user._id &&
+        <header className="app-header">
+          <div className="headerTitle">
+            Data Validator
+          </div>
+        </header>
+      }
       <Router>
         <Switch>
           <Route exact path="/">

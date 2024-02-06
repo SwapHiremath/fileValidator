@@ -24,22 +24,19 @@ th {
 }
 
 .logOutButton {
-  background: #1877f2;
-  border: 1px solid #1877f2;
   color: #fff;
   font-size: 1.25rem;
-  padding: 0.5rem;
   border-radius: 8px;
   outline: none;
   cursor: pointer;
   width: fit-content;
   margin-left: auto;
-  margin-right: 1rem;
-  margin-top: 1rem;
 }
 
 .header {
   display: flex;
+  justify-content: space-between;
+  padding: 30px
 }
 
 .tableWraper {
@@ -48,6 +45,7 @@ th {
 
 .file-info {
   display: flex;
+  flex-direction: column;
 }
 
 .info-container {
@@ -58,4 +56,33 @@ th {
 }
 .erro-wraper{
   margin: 1rem;
+}
+
+.table {
+  font-size: 12px;
+  display: block;
+  overflow-x: auto;
+}
+
+.uploadButton {
+  margin-bottom: 30px;
+  margin-left: 20px;
+}
+
+.uploadPanel {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.info__remove {
+  margin-left: 20px;
+}
+
+.headerTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-style: italic;
 }
